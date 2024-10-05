@@ -7,6 +7,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
+    // Create a user_index method
+    public function user_index(){
+        return view('home.user_index');
+    }
     // Create a index method
     public function index(){
 
@@ -14,7 +18,7 @@ class HomeController extends Controller
             $usertype = Auth()->user()->usertype;
 
             if ($usertype == 'user') {
-                return view('dashboard');
+                return view('home.user_index');
             }else {
                 return view('admin.index');
             }
