@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::middleware([
 });
 
 Route::get('/home', [HomeController::class,'index']);
+
+Route::get('add_food', [AdminController::class, 'add_food']);
+Route::post('upload_food', [AdminController::class, 'upload_food']);
