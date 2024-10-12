@@ -31,3 +31,7 @@ Route::get('/home', [HomeController::class,'index']);
 
 Route::get('add_food', [AdminController::class, 'add_food']);
 Route::post('upload_food', [AdminController::class, 'upload_food']);
+Route::get('view_food', [AdminController::class, 'view_food']);
+Route::get('delete_food/{id}', [AdminController::class, 'delete_food']);
+Route::get('update_food/{id}', [AdminController::class, 'update_food']);
+Route::post('update_process/{id}', [AdminController::class, 'update_process']);
