@@ -13,6 +13,11 @@
                                 <h4 class="pt20 pb20">{{$data->title}} </h4>
                                 <p class="text-white">{{$data->details}} </p>
                             </div>
+                            <form action="{{url('add_cart', $data->id)}}" method="post">
+                                @csrf
+                                <input type="number" name="qty" required min="1" value="1" class="input+field" style="width: 4rem;height=2rem;">
+                                <input type="submit" value="Add to Cart" class="btn btn-info">
+                            </form><br><br>
                         </div>
                     </div>
                     @endforeach
