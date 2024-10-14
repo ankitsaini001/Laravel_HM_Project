@@ -45,7 +45,7 @@ class HomeController extends Controller
             $data->image =  $cart_image;
             $data->price =  $cart_price * $request->qty;
             $data->quantity = $request->qty;
-
+            $data->userid = Auth()->user()->id;
             $data->save();
 
             return redirect()->back();
