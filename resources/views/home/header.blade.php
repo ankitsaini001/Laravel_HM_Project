@@ -27,6 +27,9 @@
                     <a class="nav-link" href="#blog">Blog<span class="sr-only">(current)</span></a>
                 </li>
                 @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('cart_items') }}">Cart</a>
+                </li>
                 @auth
                 <form action="{{route('logout')}}" method="POST">
                 @csrf
