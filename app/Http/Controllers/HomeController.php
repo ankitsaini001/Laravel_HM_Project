@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -53,5 +54,43 @@ class HomeController extends Controller
         }else{
             return redirect('login');
         }
+    }
+
+    public function cart_items(){
+        // get the user id
+        $user_id = Auth()->user()->id;
+        $data = Cart::where('userid', '=', $user_id)->get();
+       return view('home.cart_items', compact('data'));  
+    }
+
+    public function remove_cart($id){
+        $data = Cart::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+
+    public function confirm_order(Request $request){
+        $user_id = Auth()->user()->id;
+        $cart = Cart::where('userid', '=', $user_id)->get();
+
+        foreach ($cart as $cart) {
+            $order = new Order;
+            $order->name = $request->name;
+            $order->email = $request->email;
+            $order->address = $request->address;
+            $order->phone = $request->phone;
+            $order->quantity = $cart->quantity;
+            $order->price = $cart->price;
+            $order->image = $cart->image;
+            $order->title = $cart->title;
+
+            $order->save();
+
+            $data = cart::find($cart->id);
+            $data->delete();
+        }
+
+        return redirect()->back();
+
     }
 }
