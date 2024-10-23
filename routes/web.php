@@ -44,4 +44,5 @@ Route::post('add_cart/{id}', [HomeController::class,'add_cart']);
 Route::get('/cart_items', [HomeController::class, 'cart_items']);
 Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
 Route::post('/confirm_order', [HomeController::class, 'confirm_order']);
+Route::post('/book_table', [HomeController::class, 'book_table']);
 
