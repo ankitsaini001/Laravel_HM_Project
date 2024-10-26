@@ -18,12 +18,11 @@
                     <li><a href="{{url('view_food')}}">View Food</a></li>
                   </ul>
                 </li>
-                <li><a href="{{url('order_details')}}"> <i class="icon-logout"></i>Orders </a></li>
-        </ul><span class="heading">Extras</span>
-        <ul class="list-unstyled">
-          <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>
-          <li> <a href="#"> <i class="icon-writing-whiteboard"></i>Demo </a></li>
-          <li> <a href="#"> <i class="icon-chart"></i>Demo </a></li>
-        </ul>
+                <li>
+                  <a href="{{url('order_details')}}"> <i class="icon-logout"></i>Orders </a>
+              </li>
+              <li>
+                  <a href="{{url('reservations')}}"> <i class="icon-logout"></i>Reservations </a>
+              </li>
       </nav>
       <!-- Sidebar Navigation end-->

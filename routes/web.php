@@ -39,6 +39,7 @@ Route::get('order_details', [AdminController::class, 'order_details']);
 Route::get('on_way/{id}', [AdminController::class, 'on_way']);
 Route::get('deliver_order/{id}', [AdminController::class, 'deliver_order']);
 Route::get('cancel_order/{id}', [AdminController::class, 'cancel_order']);
+Route::get('/reservations', [AdminController::class, 'reservations']);
 /*Home Controller*/
 Route::post('add_cart/{id}', [HomeController::class,'add_cart']);
 Route::get('/cart_items', [HomeController::class, 'cart_items']);
