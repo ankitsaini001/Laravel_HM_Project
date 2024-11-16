@@ -27,7 +27,11 @@ class HomeController extends Controller
             if ($usertype == 'user') {
                 return view('home.user_index', compact('data'));
             }else {
-                return view('admin.index');
+                $total_user = User::where('usertype', '=', 'user')->count();
+                $total_food = Food::count();
+                $total_order = Order::count();
+                $total_deliver = Order::where('delivery_status', '=', 'Delivered')->count();
+                return view('admin.index', compact('total_user', 'total_food','total_order','total_deliver'));
             }
         }
 
@@ -57,12 +61,25 @@ class HomeController extends Controller
         }
     }
 
-    public function cart_items(){
-        // get the user id
-        $user_id = Auth()->user()->id;
-        $data = Cart::where('userid', '=', $user_id)->get();
-       return view('home.cart_items', compact('data'));  
+    public function cart_items()
+    {
+        // Check if the user is logged in
+        if (Auth()->check()) {
+            // Get the user id
+            $user_id = Auth()->user()->id;
+    
+            // Retrieve cart data for the logged-in user
+            $data = Cart::where('userid', '=', $user_id)->get();
+             // Count the cart items
+            $cart_count = $data->count();
+    
+            return view('home.cart_items', compact('data', 'cart_count'));
+        } else {
+            // Redirect to the login page if not authenticated
+            return redirect('login')->with('error', 'Please login to access your cart.');
+        }
     }
+    
 
     public function remove_cart($id){
         $data = Cart::find($id);

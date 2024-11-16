@@ -33,29 +33,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="{{url('/')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="{{url('/')}}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Gallary</a>
+                    <a class="nav-link" href="{{url('/')}}">Gallary</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#book-table">Book-Table</a>
+                    <a class="nav-link" href="{{url('/')}}">Book-Table</a>
                 </li>
             </ul>
-            <a class="navbar-brand m-auto" href="#">
+            <a class="navbar-brand m-auto" href="{{url('/')}}">
                 <img src="assets/imgs/logo.svg" class="brand-img" alt="">
                 <span class="brand-txt">Food Hut</span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">Blog<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('/')}}">Food<span class="sr-only">(current)</span></a>
                 </li>
                 @if (Route::has('login'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('cart_items') }}">Cart</a>
+                    <a class="nav-link" href="{{ url('cart_items') }}">Cart<span class="count_cart_it" style="position:relative;top:-0.3rem;border-radius:50%;background:#ff214f;padding: 0px 7px 0px 5px;">{{ $cart_count ?? 0 }}</span></a>
                 </li>
                 @auth
                 <form action="{{route('logout')}}" method="POST">

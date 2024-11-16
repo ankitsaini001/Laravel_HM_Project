@@ -65,7 +65,7 @@ class AdminController extends Controller
 
     public function on_way($id){
         $data = Order::find($id);
-        $data->delivery_status = "Your Order is on the way!";
+        $data->delivery_status = "On the way!";
 
         $data->save();
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
 
     public function deliver_order($id){
         $data = Order::find($id);
-        $data->delivery_status = "Your Order has been Delivered!";
+        $data->delivery_status = "Delivered";
 
         $data->save();
 
@@ -83,7 +83,7 @@ class AdminController extends Controller
 
     public function cancel_order($id){
         $data = Order::find($id);
-        $data->delivery_status = "Your Order is Cancelled.";
+        $data->delivery_status = "Cancelled.";
 
         $data->save();
 
